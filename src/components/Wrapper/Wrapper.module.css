@@ -9,7 +9,7 @@
   border: 1px solid red;
 }
 
-.content {
+.page {
   height: 90vh;
   width: 90vh;
 
@@ -21,14 +21,26 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  flex-basis: 50%;
 }
 
 .tabs__item {
   width: 50%;
-  border-collapse: collapse;
-  text-align: center;
-  padding: 12px 0;
+  height: 40px;
+  padding: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   border: 1px solid;
+
+  color: #000;
+  text-decoration: none;
+}
+
+.content {
+  padding: 16px;
+  margin-top: 24px;
+
+  border: 1px solid blue;
 }

@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { FC, ReactNode } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './Wrapper.module.css';
 
-export const Wrapper = () => {
+interface WrapperProps {
+  children: ReactNode;
+}
+
+export const Wrapper: FC<WrapperProps> = ({ children }) => {
   return (
     <div className={styles.wrapper}>
-      <div className={styles.content}>
+      <div className={styles.page}>
         <div className={styles.tabs}>
-          <div className={styles.tabs__item}>1</div>
-          <div className={styles.tabs__item}>2</div>
+          <Link className={styles.tabs__item} to="/converter">
+            Конвертер
+          </Link>
+
+          <Link className={styles.tabs__item} to="/">
+            Личный кабнет
+          </Link>
         </div>
+        <div className={styles.content}>some content</div>
       </div>
     </div>
   );

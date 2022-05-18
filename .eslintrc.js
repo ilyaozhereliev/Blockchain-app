@@ -9,7 +9,6 @@ module.exports = {
     'plugin:jsx-a11y/recommended',
     'plugin:import/recommended',
     'plugin:import/typescript',
-    'airbnb',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -20,7 +19,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint', 'simple-import-sort'],
+  plugins: ['react', '@typescript-eslint'],
   rules: {
     'no-unused-vars': 'off',
     'react/function-component-definition': 'off',
