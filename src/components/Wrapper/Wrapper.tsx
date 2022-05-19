@@ -1,5 +1,6 @@
 import React, { FC, ReactNode } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import cn from 'classnames';
 import styles from './Wrapper.module.css';
 
 interface WrapperProps {
@@ -7,19 +8,21 @@ interface WrapperProps {
 }
 
 export const Wrapper: FC<WrapperProps> = ({ children }) => {
+  const isPersonalPage = window.location.pathname === '/';
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.page}>
         <div className={styles.tabs}>
-          <Link className={styles.tabs__item} to="/converter">
+          <Link className={cn(styles.tabs__item, !isPersonalPage && styles.tabs__item_selected)} to="/converter">
             Конвертер
           </Link>
 
-          <Link className={styles.tabs__item} to="/">
+          <Link className={cn(styles.tabs__item, isPersonalPage && styles.tabs__item_selected)} to="/">
             Личный кабнет
           </Link>
         </div>
-        <div className={styles.content}>some content</div>
+        <div className={styles.content}>{children}</div>
       </div>
     </div>
   );
