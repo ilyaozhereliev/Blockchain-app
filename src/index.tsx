@@ -1,11 +1,12 @@
+import 'normalize.css';
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Wrapper } from './components';
-import { PersonalPage } from './pages/Personal/Personal';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
 import { ConverterPage } from './pages/Converter/Converter';
+import { PersonalPage } from './pages/Personal/PersonalPage';
+import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(

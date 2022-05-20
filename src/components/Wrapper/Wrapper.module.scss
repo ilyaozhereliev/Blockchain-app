@@ -1,4 +1,7 @@
+@use '../../assets/styles/constants.scss' as *;
+
 .wrapper {
+  font-family: 'Montserrat', sans-serif;
   height: 100vh;
   width: 100vw;
 
@@ -6,7 +9,7 @@
   justify-content: center;
   align-items: center;
 
-  border: 1px solid red;
+  border: 1px solid $color__red;
 }
 
 .page {
@@ -46,7 +49,6 @@
 
 .content {
   padding: 16px;
-  margin-top: 24px;
 
   border: 1px solid blue;
 }
