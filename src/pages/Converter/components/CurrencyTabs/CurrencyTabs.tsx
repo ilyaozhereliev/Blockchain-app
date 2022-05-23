@@ -1,16 +1,17 @@
 import cn from 'classnames';
 import React, { FC } from 'react';
 
+import { CurrenciresEnum } from '../../Converter.types';
 import styles from './CurrencyTabs.module.scss';
 
 interface CurrencyTabsProps {
   title: string;
   selectedCurrency: string;
-  handleOnClick: (value: string) => void;
+  handleOnClick: (value: CurrenciresEnum) => void;
 }
 
 export const CurrencyTabs: FC<CurrencyTabsProps> = ({ title, selectedCurrency, handleOnClick }) => {
-  const currencies = ['BTC', 'ETH', 'USD'];
+  const currencies = [CurrenciresEnum.BTC, CurrenciresEnum.ETH, CurrenciresEnum.USD];
 
   return (
     <div className={styles.currencies}>

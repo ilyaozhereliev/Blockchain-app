@@ -2,3 +2,23 @@
   font-weight: 700;
   font-size: 32px;
 }
+
+.arrows {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid;
+  padding: 24px 0;
+}
+
+.arrows__button {
+  outline: none;
+  background: none;
+  border: none;
+}
+
+.arrows__img {
+  transform: rotate(90deg);
+  cursor: pointer;
+}
