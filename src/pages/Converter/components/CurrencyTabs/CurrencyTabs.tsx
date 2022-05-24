@@ -1,25 +1,31 @@
 import cn from 'classnames';
 import React, { FC } from 'react';
 
-import { CurrenciresEnum } from '../../Converter.types';
+import { CurrenciesEnum } from '../../Converter.types';
 import styles from './CurrencyTabs.module.scss';
 
+// Создание интерфейса и типизация входных параметров
 interface CurrencyTabsProps {
   title: string;
   selectedCurrency: string;
-  handleOnClick: (value: CurrenciresEnum) => void;
+  handleOnClick: (value: CurrenciesEnum) => void;
 }
 
 export const CurrencyTabs: FC<CurrencyTabsProps> = ({ title, selectedCurrency, handleOnClick }) => {
-  const currencies = [CurrenciresEnum.BTC, CurrenciresEnum.ETH, CurrenciresEnum.USD];
+  // Хардкодим кнопки, помещая из в массив
+  const currencies = [CurrenciesEnum.BTC, CurrenciesEnum.ETH, CurrenciesEnum.USD];
 
+  // __________________________________Разметка_______________________________________________
   return (
     <div className={styles.currencies}>
-      <p className={styles.title}>{title}</p>
+      <p className={styles.currencies__title}>{title}</p>
 
       <div className={styles.currencies__wrapper}>
         {currencies.map((currency) => {
+          // Проверка строк на соответствие
           const isSelected = currency === selectedCurrency;
+
+          // ___________________________Разметка___________________________________________
           return (
             <button
               type="button"

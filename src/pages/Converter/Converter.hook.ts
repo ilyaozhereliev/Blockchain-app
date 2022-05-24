@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 
+import { useCurrenciesData } from './Converter.request';
 import {
   ConversionHookData,
-  CurrenciresEnum,
+  CurrenciesEnum,
+  CurrencyData,
   InputsData,
   InputsDataHook,
   TabsData,
@@ -11,18 +13,19 @@ import {
 /* eslint-disable implicit-arrow-linebreak */
 
 const useTabsData = (): TabsDataHook => {
+  // Создание типизированного стейта
   const [tabsData, setTabsData] = useState<TabsData>({
-    selectedCurrency: CurrenciresEnum.BTC,
-    selectedConversionCurrency: CurrenciresEnum.ETH,
+    selectedCurrency: CurrenciesEnum.BTC,
+    selectedConversionCurrency: CurrenciesEnum.ETH,
   });
 
-  const handleOnChangeSelectedCurrency = (updatedValue: CurrenciresEnum): void =>
+  const handleOnChangeSelectedCurrency = (updatedValue: CurrenciesEnum): void =>
     setTabsData({
       ...tabsData,
       selectedCurrency: updatedValue,
     });
 
-  const handleOnChangeSelectedConversionCurrency = (updatedValue: CurrenciresEnum): void =>
+  const handleOnChangeSelectedConversionCurrency = (updatedValue: CurrenciesEnum): void =>
     setTabsData({
       ...tabsData,
       selectedConversionCurrency: updatedValue,
@@ -43,7 +46,11 @@ const useTabsData = (): TabsDataHook => {
   };
 };
 
-const useInputCurrency = (): InputsDataHook => {
+const useInputCurrency = ({
+  currenciesData,
+}: {
+  currenciesData: CurrencyData[] | null;
+}): InputsDataHook => {
   const [inputsData, setInputsData] = useState<InputsData>({
     selectedInput: 10_000,
     selectedConversionInput: 40_000,
@@ -69,11 +76,13 @@ const useInputCurrency = (): InputsDataHook => {
 };
 
 export const useConverter = (): ConversionHookData => {
-  const tabsHookData = useTabsData();
+  const requestData = useCurrenciesData();
 
-  const inputsHookData = useInputCurrency();
+  const tabsHookData = useTabsData();
+  const inputsHookData = useInputCurrency({ currenciesData: requestData?.data?.data ?? null });
 
   return {
+    ...requestData,
     ...tabsHookData,
     ...inputsHookData,
   };

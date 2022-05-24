@@ -1,24 +1,38 @@
-.title {
-  font-weight: 700;
-  font-size: 32px;
-}
-
-.arrows {
+.arrows__wrapper {
   display: flex;
-  justify-content: center;
   align-items: center;
-
-  border: 1px solid;
-  padding: 24px 0;
 }
 
 .arrows__button {
-  outline: none;
   background: none;
   border: none;
+  cursor: pointer;
+  margin-top: 100px;
 }
 
 .arrows__img {
-  transform: rotate(90deg);
-  cursor: pointer;
+  width: 41px;
+  height: 35px;
+}
+
+.arrows__img:hover {
+  -webkit-animation: spin 0.5s linear;
+  -moz-animation: spin 0.5s linear;
+  animation: spin 0.5s linear;
+}
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(180deg);
+  }
+}
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(180deg);
+  }
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
 }

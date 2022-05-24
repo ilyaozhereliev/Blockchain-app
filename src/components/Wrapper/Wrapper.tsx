@@ -1,30 +1,22 @@
-import cn from 'classnames';
 import React, { FC, ReactNode } from 'react';
-import { Link } from 'react-router-dom';
 
+import { Body, Header } from './components';
 import styles from './Wrapper.module.scss';
 
+// Создание интерфейса и типизация входных параметров
 interface WrapperProps {
+  // type ReactNode - react элемент
   children: ReactNode;
+  pageName: string;
 }
 
-export const Wrapper: FC<WrapperProps> = ({ children }) => {
-  const isPersonalPage = window.location.pathname === '/';
-
-  return (
-    <div className={styles.wrapper}>
-      <div className={styles.page}>
-        <div className={styles.tabs}>
-          <Link className={cn(styles.tabs__item, !isPersonalPage && styles.tabs__item_selected)} to="/converter">
-            Конвертер
-          </Link>
-
-          <Link className={cn(styles.tabs__item, isPersonalPage && styles.tabs__item_selected)} to="/">
-            Личный кабнет
-          </Link>
-        </div>
-        <div className={styles.content}>{children}</div>
-      </div>
+export const Wrapper: FC<WrapperProps> = ({ children, pageName }) => (
+  // {/* ____________Рендер children на странице________________ */}
+  <div className={styles.wrapper}>
+    <Header />
+    <div className={styles.page}>
+      <p className={styles.page__name}>{pageName}</p>
+      <Body>{children}</Body>
     </div>
-  );
-};
+  </div>
+);
