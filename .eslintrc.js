@@ -60,6 +60,8 @@ module.exports = {
 
     'react/jsx-filename-extension': 'off',
 
+    'react/require-default-props': 'off',
+
     'simple-import-sort/imports': 'error',
 
     'simple-import-sort/exports': 'error',
@@ -69,5 +71,8 @@ module.exports = {
 
     // eslint-disable-next-line no-dupe-keys
     'linebreak-style': 0,
+
+    'no-shadow': 'off',
+    '@typescript-eslint/no-shadow': 'warn',
   },
 };

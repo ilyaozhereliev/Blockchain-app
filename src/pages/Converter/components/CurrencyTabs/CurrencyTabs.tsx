@@ -13,7 +13,7 @@ interface CurrencyTabsProps {
 
 export const CurrencyTabs: FC<CurrencyTabsProps> = ({ title, selectedCurrency, handleOnClick }) => {
   // Хардкодим кнопки, помещая из в массив
-  const currencies = [CurrenciesEnum.BTC, CurrenciesEnum.ETH, CurrenciesEnum.USD];
+  const currencies = [CurrenciesEnum.USD, CurrenciesEnum.BTC, CurrenciesEnum.ETH];
 
   // __________________________________Разметка_______________________________________________
   return (

@@ -2,21 +2,25 @@ import 'normalize.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import { ConverterPage } from './pages/Converter/Converter';
-import { PersonalPage } from './pages/Personal/PersonalPage';
+import { PersonalPage } from './pages/Personal/Personal';
+import store from './redux';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<PersonalPage />} />
-        <Route path="/converter" element={<ConverterPage />} />
-      </Routes>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<PersonalPage />} />
+          <Route path="/converter" element={<ConverterPage />} />
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
 );
 
