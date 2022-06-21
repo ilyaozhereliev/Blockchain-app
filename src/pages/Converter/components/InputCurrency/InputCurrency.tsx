@@ -1,51 +1,56 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 
 import styles from './InputCurrency.module.scss';
+import { getClearedValue, isNumeric } from './InputCurrency.utils';
 
-// Создание интерфейса и типизация входных параметров
-interface InputCurrencyType {
+interface InputCurrencyProps {
   value: number;
   editable: boolean;
-  exchangeCourse: string;
+
+  description?: string;
 
   onChange?: (value: number) => void;
 }
 
-const MAX_LENGTH = 16;
-
-export const InputCurrency: FC<InputCurrencyType> = ({
+export const InputCurrency: FC<InputCurrencyProps> = ({
   value,
   editable,
-  exchangeCourse,
+  description,
+
   onChange = null,
 }) => {
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    // Проверка: 'можно ли изменять компонент?' Если нет - возврат из функции
-    // Если инпут только для чтения, то мы выходим отсюда
+    /**  Если инпут только для чтения, то  мы выхоидм отсюда * */
     if (!editable || !onChange) return;
 
-    const getClearedValue = (val: string): string => val.replace(/\s/gm, '');
-    const isNumeric = (str: string): boolean => str.replace(/\D/gm, '').length === str.length;
-
-    // В остальных случаях превращаем инпут в число и передаем onChange
-    // Строка без пробелов
+    /** Строка без пробелов * */
     const clearedValue = getClearedValue(event.target.value);
-    // даляем из строки без пробелов все символы, которые НЕ числа
-    //  И если длина останется такой-же, значит это число
+
+    /** Удаляем из строки без пробелов все символы, которые НЕ числа
+     * И если длина останется такой-же, то это число
+     * * */
     const isCorrectNumber = isNumeric(clearedValue);
 
-    // Если это не число - выходим
-    if (!isCorrectNumber || clearedValue.length > MAX_LENGTH) return;
+    /** Если это НЕ число, то выходим * */
+    if (!isCorrectNumber) return;
+
     onChange(Number(clearedValue));
   };
+
+  // Логика:
+  // значение инпутов у нас хранится только в inputsData
+  //  и мы тут это значение приобразуем в строку с разделителями
   const inputValue = value.toLocaleString();
 
-  // _____________________________________Разметка_____________________________________________
   return (
-    <div className={styles.wrapper}>
-      <input type="text" className={styles.input} value={inputValue} onChange={handleOnChange} />
-
-      <span className={styles.course}>{exchangeCourse}</span>
+    <div className={styles.input}>
+      <input
+        type="text"
+        value={inputValue}
+        className={styles.input__input}
+        onChange={handleOnChange}
+      />
+      <span className={styles.input__course}>{description}</span>
     </div>
   );
 };

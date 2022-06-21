@@ -2,9 +2,9 @@
 import React, { FC } from 'react';
 
 import { arrows } from '../../../../assets/icons';
-import { CurrenciesData } from '../../../../hooks';
+import { CurrenciesData } from '../../../../types';
+import { InputCurrency } from '../../../Personal';
 import { CurrencyTabs } from '../CurrencyTabs';
-import { InputCurrency } from '../InputCurrency';
 import { useContent } from './Content.hooks';
 import styles from './Content.module.scss';
 
@@ -34,7 +34,7 @@ export const Content: FC<ContentProps> = ({ currenciesData }) => {
         <InputCurrency
           editable
           value={converterData.input}
-          exchangeCourse={exchangeInputCourse}
+          description={exchangeInputCourse}
           onChange={changeInput}
         />
       </div>
@@ -54,7 +54,7 @@ export const Content: FC<ContentProps> = ({ currenciesData }) => {
         <InputCurrency
           editable={false}
           value={converterData.output}
-          exchangeCourse={exchangeOutputCourse}
+          description={exchangeOutputCourse}
         />
       </div>
     </div>

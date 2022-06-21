@@ -1,9 +1,10 @@
 import { useEffect, useMemo } from 'react';
 
 /* eslint-disable implicit-arrow-linebreak */
-import { CurrenciesData, useTypedSelector } from '../../../../hooks';
+import { useTypedSelector } from '../../../../hooks';
 import useActions from '../../../../hooks/useActions';
 import { Converter } from '../../../../redux/reducers/converter/types';
+import { CurrenciesData } from '../../../../types';
 import { ContentDataHook } from './Content.types';
 import { getExchangeCourse } from './Content.utils';
 
