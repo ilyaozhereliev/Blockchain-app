@@ -16,8 +16,8 @@ root.render(
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<PersonalPage />} />
           <Route path="/converter" element={<ConverterPage />} />
+          <Route path="/" element={<PersonalPage />} />
         </Routes>
       </BrowserRouter>
     </Provider>

@@ -29,17 +29,13 @@ export const Content: FC<ContentProps> = ({ currenciesData }) => {
 
   return (
     <div className={styles.page}>
-      <h1 className={styles.title}>Портфель</h1>
-
       <div>
         <h3 className={styles.balance}>Баланс аккаунта</h3>
-        <p className={styles.balance__value}>
+        <div className={styles.balance__value}>
           {walletAmount}
-          {}
-          usd
-        </p>
+          <p className={styles.balance__usd}>USD</p>
+        </div>
       </div>
-
       <CryptoCurrencies
         walletData={walletData}
         currenciesData={currenciesData}
@@ -47,7 +43,7 @@ export const Content: FC<ContentProps> = ({ currenciesData }) => {
       />
 
       {isShowModal && (
-        <div>
+        <div className={styles.content}>
           <Market
             usdValue={usdInputValue}
             maxInputValue={maxInputValue}
@@ -58,8 +54,8 @@ export const Content: FC<ContentProps> = ({ currenciesData }) => {
           />
 
           <div>
-            <button type="button" onClick={onMarketAction}>
-              СТОУНК!
+            <button className={styles.modal_button} type="button" onClick={onMarketAction}>
+              Подтвердить
             </button>
           </div>
         </div>

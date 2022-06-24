@@ -23,31 +23,25 @@ export const Market: FC<MarketProps> = ({
   maxInputValue,
   onChange,
 }) => {
-  /** TODO: отрефакторить! * */
-  const title = `Мы работаем с ${selectedCurrency}`;
-  const actionTitle = `и мы будем ${marketAction === 'BUY' ? 'покупать' : 'продавать'}`;
+  const actionTitle = `${marketAction === 'BUY' ? 'Купить' : 'Продать'} ${selectedCurrency}`;
 
-  const marketTitle = `${marketAction === 'BUY' ? 'Dollar' : selectedCurrency} to`;
-  const convertibleCurrencyTitle = marketAction === 'BUY' ? selectedCurrency : 'Dollars';
+  const marketTitle = `${marketAction === 'BUY' ? 'USD' : selectedCurrency}`;
+  const convertibleCurrencyTitle = marketAction === 'BUY' ? selectedCurrency : 'USD';
 
   const inputValue = marketAction === 'BUY' ? usdValue : cryptoValue;
   const outputValue = marketAction === 'BUY' ? cryptoValue : usdValue;
 
   return (
-    <div className={styles.action}>
-      <div>
-        <h2>{title}</h2>
+    <div className={styles.modal}>
+      <div className={styles.modal_content}>
+        <h1 className={styles.modal_title}>{actionTitle}</h1>
 
-        <h3>{actionTitle}</h3>
+        <h2 className={styles.modal_coin}>{marketTitle}</h2>
+        <InputCurrency editable value={inputValue} onChange={onChange} />
+
+        <h2 className={styles.modal_coin}>{convertibleCurrencyTitle}</h2>
+        <InputCurrency editable={false} value={outputValue} />
       </div>
-
-      <h1>{marketTitle}</h1>
-
-      <InputCurrency editable value={inputValue} onChange={onChange} />
-
-      <h1>{convertibleCurrencyTitle}</h1>
-
-      <InputCurrency editable={false} value={outputValue} />
     </div>
   );
 };
