@@ -4,7 +4,7 @@
 
 ***
 
-## 🌐 Demo here <a href="https://blockchain-app-six.vercel.app/" target="_blank"/>here</a>
+## 🌐 You can try demo <a href="https://blockchain-app-six.vercel.app/" target="_blank"/>here</a>
 
 ***
 
